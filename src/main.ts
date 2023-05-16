@@ -58,7 +58,7 @@ function delay(time: number) {
         }
         await page.keyboard.press('Enter') */
     const sendGif = async () => {
-        const gif = await getRandomGif("grind_work")
+        const gif = await getRandomGif("typing")
         console.log(gif.itemurl)
         await page.waitForSelector('[role="textbox"]')
         await page.type('[role="textbox"]', gif.itemurl)
@@ -67,8 +67,9 @@ function delay(time: number) {
     }
     const loop = () => {
         sendGif()
-        setTimeout(loop, 60000)
+        setTimeout(loop, Math.floor(Math.random() * (90000 - 60000 + 1)) + 60000);
     }
+
     loop()
 })();
 

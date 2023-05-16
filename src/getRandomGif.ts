@@ -38,7 +38,7 @@ export const dataFetch = <T,>(url: string): Promise<T> => {
 };
 
 export const getRandomGif = async (query: string) => {
-    const {results } = (await dataFetch<IResult>(`${apiDomain}search?q=${query}&key=${apikey}&client_key=dMails&limit=1&random=1`))
+    const {results } = (await dataFetch<IResult>(`${apiDomain}search?q=${query}&key=${apikey}&client_key=dMails&limit=1&random=1&contentfilter=high`))
     return results[0]
 }
 
