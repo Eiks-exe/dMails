@@ -16,7 +16,7 @@ function delay(time: number) {
 (async () => {
 
     const browser = await puppeteer.launch({
-        headless: "new",
+        headless: true,
         userDataDir: "./utils/myuserDataDir",
     });
     const page = await browser.newPage();
@@ -64,10 +64,18 @@ function delay(time: number) {
         await page.keyboard.press('Enter')
         await delay(1000)
     }
-    const loop = () => {
-        sendGif()
-        setTimeout(loop, 70000);
+    const sparkle= async () => {
+        await page.waitForSelector('[role="textbox"]')
+        await page.type('[role="textbox"]', "** **")
+        await page.keyboard.press('Enter')
+        await delay(1000)
     }
+
+    const loop = () => {
+        sparkle()
+        setTimeout(loop, 60000*10);
+    }
+
 
     loop()
 })();
