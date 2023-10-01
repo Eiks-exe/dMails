@@ -16,8 +16,7 @@ function delay(time: number) {
 (async () => {
 
     const browser = await puppeteer.launch({
-        executablePath: process.env.EDGE_PATH,
-        headless: true,
+        headless: "new",
         userDataDir: "./utils/myuserDataDir",
     });
     const page = await browser.newPage();
@@ -67,7 +66,7 @@ function delay(time: number) {
     }
     const loop = () => {
         sendGif()
-        setTimeout(loop, Math.floor(Math.random() * (90000 - 60000 + 1)) + 60000);
+        setTimeout(loop, 70000);
     }
 
     loop()
